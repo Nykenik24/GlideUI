@@ -1,0 +1,3 @@
+[submodule "lib/love2d-tools"]
+	path = lib/love2d-tools
+	url = https://github.com/Nykenik24/love2d-tools.git
