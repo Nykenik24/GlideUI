@@ -3,6 +3,7 @@ local function getScriptFolder() --* get the path from the root folder in which 
 	return (debug.getinfo(1, "S").source:sub(2):match("(.*/)"))
 end
 PATH = getScriptFolder()
+TOOLS = require(PATH .. "lib.love2d-tools.lib")
 CORE = PATH .. "src.core."
 ELEMENTS = PATH .. "src.elements."
 
