@@ -1,17 +1,24 @@
 [![MIT Licence](https://badges.frapsoft.com/os/mit/mit.svg?v=103)](https://opensource.org/licenses/mit-license.php) [![Open Source Love](https://badges.frapsoft.com/os/v2/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges/) 
 
-# GlideUI
+# Overview
 A lightweight Love2d GUI library with the purpouse of making easy and fast interfaces for fast debugging, ultra-customizable menus and more.
 
-## Glide's unique feature
-Glide's elements are not `button`, `slider`, etc. They are objects with `OnPress`, `OnHold`, etc. events, various functions, style options like `color` and basic parameters like `x` or `w` *(width)*.
-This makes it so you can build your GUI elements step by step, but without being too tedious, allowing for incredible customization. If you don't like building GUI elements manually, you can also use the prefabs.
+# Features
+- ## Elements 🟦
+Glide's elements are not `button`, `slider`, etc. They are objects with various useful events, methods, style options and basic parameters. This makes it so you can build your GUI elements step by step, but without being too tedious, allowing for incredible customization. If you don't like building GUI elements manually, you can also use the prefabs.
 > Prefabs are not made at this moment.
 
-## Frames
-Frames in Glide work as an element storer, you can align (easier) or attach (more precise) an element to a frame and then move the frame with `Frame:Drag()` or manually changing `frame.x` and `frame.y`. Frames also have mouse grabbing (with `Frame:GrabMouse()`).
+- ## Frames 🖼️
+Frames in Glide work as an element storer, you can align (easier) or attach (more precise) an element to a frame and then move the frame with `Frame:Drag()` or manually changing `frame.x` and `frame.y`. Frames also have mouse grabbing (with `Frame:GrabMouse(true)`).
 
-## Simple GUI example
+- ## Flexible and Powerful UIs 🔨
+GlideUI allows for infinite customization of [elements](README.md#Elements) and [frames](README.md#Frames).
+
+- ## Events 📥
+Glide's elements have easy-to-use events, such as `OnPress(button: number, func: function)`, `OnHover(func: function)` and `OnUnhover(func: function)`; `OnHold(button: number, func: function)`, etc.
+
+
+# Simple GUI example
 This will produce a GUI with a button in the middle of a draggable frame.
 ```lua
 function love.load()
