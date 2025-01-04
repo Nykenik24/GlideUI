@@ -52,18 +52,18 @@ end
 ```
 
 # Installation
-1. Download the library:\
+1. ## Download the library:\
 There are three methods:
-- Clone the library:
+- ### Clone the library:
 ```bash
 git clone https://github.com/Nykenik24/GlideUI.git path/to/glide
 ```
-- Add as a submodule **(recommended)**:
+- ### Add as a submodule **(recommended)**:
 ```bash
 git submodule add https://github.com/Nykenik24/GlideUI.git path/to/glide
 ```
-- Download the latest release.
-2. Require the library:
+- ### Download the latest release.
+2. ## Require the library:
 ```lua
 local glide = require("path.to.glide")
 ```
