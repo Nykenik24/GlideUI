@@ -52,7 +52,7 @@ end
 ```
 
 # Installation
-1. ## Download the library:\
+1. ## Download the library:
 There are three methods:
 - ### Clone the library:
 ```bash
