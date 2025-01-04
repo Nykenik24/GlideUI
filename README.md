@@ -12,7 +12,7 @@ Glide's elements are not `button`, `slider`, etc. They are objects with various 
 Frames in Glide work as an element storer, you can align (easier) or attach (more precise) an element to a frame and then move the frame with `Frame:Drag()` or manually changing `frame.x` and `frame.y`. Frames also have mouse grabbing (with `Frame:GrabMouse(true)`).
 
 ## Flexible and Powerful UIs 🔨
-GlideUI allows for infinite customization of [elements](README.md#Elements) and [frames](README.md#Frames).
+GlideUI allows for infinite customization of [elements](README.md#Elements) and [frames](README.md#Frames). Lighten or Darken your elements with methods, or restore their color completely. Set and align the text inside elements, or align elements inside frames. The possibilites are infinite!
 
 ## Events 📥
 Glide's elements have easy-to-use events, such as `OnPress(button: number, func: function)`, `OnHover(func: function)` and `OnUnhover(func: function)`; `OnHold(button: number, func: function)`, etc.
