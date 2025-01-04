@@ -52,5 +52,5 @@ function love.draw()
 		TEST_BUTTON:_DrawDebug(0.75)
 		TEST_FRAME:_DrawDebug(0.75)
 	end
-	love.graphics.print(tostring(love.timer.getFPS()))
+	love.graphics.print("FPS: " .. tostring(love.timer.getFPS()))
 end
