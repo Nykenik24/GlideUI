@@ -272,6 +272,26 @@ function glide.New(x, y, w, h, color, fg_color)
 				return false
 			end
 		end,
+		LockX = function(self, min, max)
+			if self.x < min then
+				self.x = min
+			elseif self.x > max then
+				self.x = max
+			end
+		end,
+		LockY = function(self, min, max)
+			if self.y < min then
+				self.y = min
+			elseif self.y > max then
+				self.y = max
+			end
+		end,
+		LockAxisX = function(self)
+			self:LockX(self.x - 1, self.x + 1)
+		end,
+		LockAxisY = function(self)
+			self:LockY(self.y - 1, self.y + 1)
+		end,
 	}
 end
 
