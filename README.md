@@ -100,4 +100,4 @@ function love.draw()
 end
 ```
 
-![Preview](screenshots/hover_button_preview.gif)
+![Hovered](screenshots/hover_button_1.png) ![Not hovered](screenshots/hover_button_2.png)
