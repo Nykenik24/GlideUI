@@ -123,6 +123,19 @@ function glide.New(x, y, w, h, color, fg_color)
 					self.x + self.w + 2,
 					self.y + 12
 				)
+				if self.attached.x and self.attached.y and self.attached.frame_x and self.attached.frame_y then
+					love.graphics.setColor(1, 0, 1)
+					love.graphics.print(
+						("attached x, y: %i, %i\nframe x, y: %i, %i"):format(
+							self.attached.x,
+							self.attached.y,
+							self.attached.frame_x,
+							self.attached.frame_y
+						),
+						self.x,
+						self.y + self.h + 5
+					)
+				end
 			end
 			if self:Pressed(1 or 2 or 3) then
 				love.graphics.setColor(1, 0, 0, opacity)
@@ -140,20 +153,31 @@ function glide.New(x, y, w, h, color, fg_color)
 			self.x = targetx + xoffset
 			self.y = targety + yoffset
 		end,
+		attached = { x = nil, y = nil, frame_x = nil, frame_y = nil },
 		AttachToFrame = function(self, frame, element_x, element_y)
 			self.x = frame.x + element_x
+			self.attached.x = self.x - frame.x
+			self.attached.frame_x = frame.x
 			self.y = frame.y + element_y
+			self.attached.y = self.y - frame.y
+			self.attached.frame_y = frame.y
 		end,
 		AlignToFrameX = function(self, frame, align)
 			if align == "center" then
 				self.x = frame.x + ((frame.w / 2) - (self.w / 2))
+				self.attached.x = self.x - frame.x
+				self.attached.frame_x = frame.x
 				return true
 			elseif align == "left" then
 				self.x = frame.x + 2
+				self.attached.x = self.x - frame.x
+				self.attached.frame_x = frame.x
 				return true
 			elseif align == "right" then
 				local frame_x2 = frame.x + frame.w
 				self.x = frame_x2 - self.w - 2
+				self.attached.x = self.x - frame.x
+				self.attached.frame_x = frame.x
 				return true
 			else
 				return false
@@ -162,13 +186,19 @@ function glide.New(x, y, w, h, color, fg_color)
 		AlignToFrameY = function(self, frame, align)
 			if align == "center" then
 				self.y = frame.y + ((frame.h / 2) - (self.h / 2))
+				self.attached.y = self.y - frame.y
+				self.attached.frame_y = frame.y
 				return true
 			elseif align == "top" then
 				self.y = frame.y + 2
+				self.attached.y = self.y - frame.y
+				self.attached.frame_y = frame.y
 				return true
 			elseif align == "bottom" then
 				local frame_y2 = frame.y + frame.h
 				self.y = frame_y2 - self.h - 2
+				self.attached.y = self.y - frame.y
+				self.attached.frame_y = frame.y
 				return true
 			else
 				return false
