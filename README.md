@@ -4,17 +4,17 @@
 A lightweight Love2d GUI library with the purpouse of making easy and fast interfaces for fast debugging, ultra-customizable menus and more.
 
 # Features
-- ## Elements 🟦
+## Elements 🟦
 Glide's elements are not `button`, `slider`, etc. They are objects with various useful events, methods, style options and basic parameters. This makes it so you can build your GUI elements step by step, but without being too tedious, allowing for incredible customization. If you don't like building GUI elements manually, you can also use the prefabs.
 > Prefabs are not made at this moment.
 
-- ## Frames 🖼️
+## Frames 🖼️
 Frames in Glide work as an element storer, you can align (easier) or attach (more precise) an element to a frame and then move the frame with `Frame:Drag()` or manually changing `frame.x` and `frame.y`. Frames also have mouse grabbing (with `Frame:GrabMouse(true)`).
 
-- ## Flexible and Powerful UIs 🔨
+## Flexible and Powerful UIs 🔨
 GlideUI allows for infinite customization of [elements](README.md#Elements) and [frames](README.md#Frames).
 
-- ## Events 📥
+## Events 📥
 Glide's elements have easy-to-use events, such as `OnPress(button: number, func: function)`, `OnHover(func: function)` and `OnUnhover(func: function)`; `OnHold(button: number, func: function)`, etc.
 
 
