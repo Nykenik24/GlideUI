@@ -313,6 +313,9 @@ function glide.NewFrame(x, y, w, h, color)
 				love.graphics.setColor(1, 0, 1, opacity)
 				love.graphics.rectangle("line", self.x, self.y, self.w, self.h)
 				love.graphics.setColor(1, 1, 1, opacity)
+
+				local cx, cy = love.mouse.getPosition()
+				local distance_x, distance_y = cx - self.x, cy - self.y
 				local info_string = ([[
 x: %i
 y: %i
@@ -320,12 +323,10 @@ w: %i
 h: %i
 cx: %i
 cy: %i
-				]]):format(self.x, self.y, self.w, self.h, love.mouse.getPosition())
+				]]):format(self.x, self.y, self.w, self.h, distance_x, distance_y)
 				love.graphics.print(info_string, self.x, self.y - 90)
 
 				love.graphics.setColor(1, 0, 0, opacity)
-				local cx, cy = love.mouse.getPosition()
-				local distance_x, distance_y = cx - self.x, cy - self.y
 				love.graphics.rectangle("line", self.x, self.y, distance_x, distance_y)
 				love.graphics.line(self.x, self.y, self.x + distance_x, self.y + distance_y)
 				love.graphics.circle("line", self.x + distance_x, self.y + distance_y, 10)
