@@ -2,7 +2,6 @@
 
 function love.load()
 	love.graphics.setDefaultFilter("nearest", "nearest")
-	love.mouse.setGrabbed(true)
 	love.window.setVSync(0)
 
 	BUTTONS = {}
