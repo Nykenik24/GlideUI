@@ -74,3 +74,28 @@ Now you can use GlideUI!
 ## Demo
 To run the demo, run the `main.lua` file with `love`.
 
+## Recipes
+<details>
+<summary>Button with hover</summary>
+
+```lua
+function love.load()
+    local glide = require("glide")
+    BUTTON = glide.New(200, 300, 125, 25, {1, 0, 0})
+end
+
+function love.update()
+    glide.Update()
+
+    BUTTON:OnHover(function()
+        BUTTON:Darken(0.25)
+    end)
+    BUTTON:OnUnhover(function()
+        BUTTON:RestoreColor()
+    end)
+end
+
+function love.draw()
+    BUTTON:Draw()
+end
+```
