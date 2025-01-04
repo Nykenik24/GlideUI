@@ -9,7 +9,7 @@ This makes it so you can build your GUI elements step by step, but without being
 > Prefabs are not made at this moment.
 
 ## Frames
-Frames in Glide work as an element storer, you can align (easier) or attach (more precise) an element to a frame and then move the frame with `Frame:Drag()` or manually changing `frame.x` and `frame.y`. Frames also have mouse grabbing (with `Frame:GrabMouse()`) and *(will)* have resizing.
+Frames in Glide work as an element storer, you can align (easier) or attach (more precise) an element to a frame and then move the frame with `Frame:Drag()` or manually changing `frame.x` and `frame.y`. Frames also have mouse grabbing (with `Frame:GrabMouse()`).
 
 ## Simple GUI example
 This will produce a GUI with a button in the middle of a draggable frame.
