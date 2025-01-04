@@ -69,6 +69,12 @@ local glide = require("path.to.glide")
 ```
 Now you can use GlideUI!
 
+# Roadmap
+- Make prefabs.
+- Make a better frame dragging system (I am struggling with this one). 
+- Make a layer system for frames and elements.
+- Fix all visual and interactive bugs (Such as dragging multiple elements at the same time unintentionally).
+
 # More
 
 ## Demo
