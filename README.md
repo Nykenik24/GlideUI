@@ -29,7 +29,7 @@ Glide's elements have easy-to-use events, such as `OnPress(button: number, func:
 This will produce a GUI with a button in the middle of a draggable frame.
 ```lua
 function love.load()
-    local glide = require("lib.glide")
+    glide = require("lib.glide")
 
     --make a new element
     --parameters: x, y, w, h, color
