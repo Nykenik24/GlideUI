@@ -3,6 +3,13 @@
 # Overview
 A lightweight Love2d GUI library with the purpouse of making easy and fast interfaces for fast debugging, ultra-customizable menus and more.
 
+## Disclaimer
+GlideUI is currently **W.I.P** *(Work In Progress)*, so expect bugs and lack of features. I am working hard on making it fully stable, but for now don't expect perfect behaviour of the library.
+
+### Helping in development
+- If you encounter any bug or have suggestions, you can [open an issue](https://github.com/Nykenik24/GlideUI/issues).
+- If you want to contribute, please see [CONTRIBUTING.md](./CONTRIBUTING.md).
+
 # Features
 ## Elements 🟦
 Glide's elements are not `button`, `slider`, etc. They are objects with various useful events, methods, style options and basic parameters. This makes it so you can build your GUI elements step by step, but without being too tedious, allowing for incredible customization. If you don't like building GUI elements manually, you can also use the prefabs.
