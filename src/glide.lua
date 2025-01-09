@@ -12,10 +12,6 @@ local function IsPressing(x, y, w, h, bttn)
 	return (IsHovering(x, y, w, h) and love.mouse.isDown(bttn))
 end
 
-local function Pressed(x, y, w, h, bttn, curr)
-	return (IsHovering(x, y, w, h) and curr == bttn)
-end
-
 local function GetBorder(x, y, w, h, border_width)
 	return {
 		x = x - border_width,
@@ -25,6 +21,9 @@ local function GetBorder(x, y, w, h, border_width)
 	}
 end
 
+-- INFO: Variables
+local dragging_frame = false
+
 -- INFO: Global functions
 
 ---**IMPORTANT: Call at the start of `love.update`, before any GlideUI event**
@@ -32,6 +31,7 @@ function glide.Update()
 	--avoid OnPress events activating even when not hovered
 	love.mousepressed = function() end
 	love.mousereleased = function() end
+	love.mousemoved = function() end
 end
 
 ---Create a new GlideUI element
@@ -335,6 +335,10 @@ cy: %i
 				love.graphics.setColor(1, 1, 0)
 				love.graphics.rectangle("line", self.x, self.y, self.w, self.h)
 			end
+			if dragging_frame then
+				love.graphics.setColor(1, 0.5, 0)
+				love.graphics.print("A frame is being dragged", self.x, self.y + self.h)
+			end
 
 			love.graphics.setColor(1, 1, 1, 1)
 		end,
@@ -361,15 +365,20 @@ cy: %i
 		end,
 		dragging = false,
 		Drag = function(self, limit_x, limit_y)
+			if dragging_frame and not self.dragging then
+				return
+			end
 			limit_x, limit_y = limit_x or self.w, limit_y or self.w
 			if IsPressing(self.x, self.y, limit_x, limit_y, 1) then
+				dragging_frame = true
 				self.dragging = true
-				local cx, cy = love.mouse.getPosition()
-				--local distance_x, distance_y = cx - self.x, cy - self.y
-				self.x = cx - 10
-				self.y = cy - 10
+				love.mousemoved = function(_, _, dx, dy, _)
+					self.x = self.x + dx
+					self.y = self.y + dy
+				end
 			else
 				self.dragging = false
+				dragging_frame = false
 			end
 		end,
 		grabbed = false,
