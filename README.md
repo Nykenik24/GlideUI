@@ -85,9 +85,16 @@ Now you can use GlideUI!
 
 # Roadmap
 - Make prefabs.
-- Make a better frame dragging system (I am struggling with this one). 
+- ~Make a better frame dragging system (I am struggling with this one).~
+<!--
 - Make a layer system for frames and elements.
+I want GlideUI to not have any element/frame registry or table, so making a layer system is basically impossible. I also don't want to interfere
+on how you draw and manage your UIs
+-->
+<!-- 
 - Fix all visual and interactive bugs (Such as dragging multiple elements at the same time unintentionally).
+Doesn't really make sense because bugs will appear and disappear with time, so it's not really an objective, it is a task.
+-->
 
 # More
 
