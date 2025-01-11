@@ -39,6 +39,7 @@ function love.load()
 
 	--variables
 	SHOW_DEBUG = false
+	DEBUG_OPACITY = 1
 	DRAG_FRAME = false
 	GRAB_MOUSE = false
 end
@@ -59,7 +60,6 @@ function love.update(dt)
 		print("Pressed button 3")
 	end)
 	BUTTONS.QUIT:OnRelease(1, love.event.quit)
-
 	for _, button in pairs(BUTTONS) do
 		button:OnHover(function()
 			button:Darken(0.25)
@@ -98,19 +98,19 @@ function love.draw()
 	for _, frame in pairs(FRAMES) do
 		frame:Draw()
 		if SHOW_DEBUG then
-			frame:_DrawDebug()
+			frame:_DrawDebug(DEBUG_OPACITY)
 		end
 	end
 	for _, bar in pairs(BARS) do
 		bar:Draw()
 		if SHOW_DEBUG then
-			bar:_DrawDebug()
+			bar:_DrawDebug(DEBUG_OPACITY)
 		end
 	end
 	for _, button in pairs(BUTTONS) do
 		button:Draw()
 		if SHOW_DEBUG then
-			button:_DrawDebug(0.75)
+			button:_DrawDebug(DEBUG_OPACITY)
 		end
 	end
 	love.graphics.print("FPS: " .. tostring(love.timer.getFPS()))
