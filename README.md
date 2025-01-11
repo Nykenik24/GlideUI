@@ -1,5 +1,28 @@
-[![MIT Licence](https://badges.frapsoft.com/os/mit/mit.svg?v=103)](https://opensource.org/licenses/mit-license.php) [![Open Source Love](https://badges.frapsoft.com/os/v2/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges/) 
+<!-- TOC start (generated with https://github.com/derlin/bitdowntoc) -->
 
+- [Overview](#overview)
+   * [Disclaimer](#disclaimer)
+      + [Helping in development](#helping-in-development)
+- [Features](#features)
+   * [Elements 🟦](#elements-)
+   * [Frames 🖼️](#frames-)
+   * [Flexible and Powerful UIs 🔨](#flexible-and-powerful-uis-)
+   * [Events 📥](#events-)
+- [Simple GUI example](#simple-gui-example)
+- [Installation](#installation)
+- [Roadmap](#roadmap)
+- [More](#more)
+   * [Demo](#demo)
+   * [Recipes](#recipes)
+
+<!-- TOC end -->
+
+![GitHub Downloads (all assets, all releases)](https://img.shields.io/github/downloads/Nykenik24/GlideUI/total) ![GitHub Repo stars](https://img.shields.io/github/stars/Nykenik24/GlideUI?style=flat) ![GitHub last commit](https://img.shields.io/github/last-commit/Nykenik24/GlideUI) ![GitHub Release Date](https://img.shields.io/github/release-date/Nykenik24/GlideUI)
+
+
+
+
+### GlideUI is under the MIT license.
 # Overview
 A lightweight Love2d GUI library with the purpose of creating easy and fast interfaces for quick debugging, ultra-customizable menus and more.
 
@@ -23,7 +46,6 @@ GlideUI allows for infinite customization of [elements](README.md#elements) and 
 ## Events 📥
 Glide's elements have easy-to-use events, such as `OnPress(button: number, func: function)`, `OnHover(func: function)`, `OnUnhover(func: function)`, `OnHold(button: number, func: function)`, and more.
 
-
 # Simple GUI example
 This will produce a GUI with a button in the middle of a draggable frame.
 ```lua
@@ -31,12 +53,12 @@ function love.load()
     glide = require("lib.glide")
 
     --make a new element
-    --parameters: x, y, w, h, color
+    --parameters: x, y, width, height, color
     BUTTON = glide.New(200, 300, 125, 25, {0.25, 0.25, 0.75})
     BUTTON:SetText("Press me!") --set the button's text
 
     --make a new frame
-    --parameters: x, y, w, h, color
+    --parameters: x, y, width, height, color
     FRAME = glide.NewFrame(100, 200, 200, 200, {0.5, 0.5, 0.5})
 end
 
@@ -68,15 +90,45 @@ end
 # Installation
 1. ## Download the library:
 There are three methods to download the library:
-- ### Clone the library:
+### Clone the library:
+<details>
+<summary>Pros/Cons</summary>
+    
+#### Pros:
+- Easy to use.
+- Doesn't require a git repository.
+#### Cons:
+- Has to be manually updated.
+- Harder to manage long-term.
+</details>
+
 ```bash
 git clone https://github.com/Nykenik24/GlideUI.git path/to/glide
 ```
-- ### Add as a submodule **(recommended)**:
+### Add as a submodule **(recommended)**:
+<details>
+<summary>Pros/Cons</summary>
+    
+#### Pros:
+- Easier to update.
+- Easy to use.
+#### Cons:
+- A git repository is necessary.
+</details>
+
 ```bash
 git submodule add https://github.com/Nykenik24/GlideUI.git path/to/glide
 ```
-- ### Download the latest release.
+### Download the latest release.
+<details>
+<summary>Pros/Cons</summary>
+    
+#### Pros:
+- Releases are usually stable and rarely have bugs.
+#### Cons:
+- You don't have the latest features.
+</details>
+
 2. ## Require the library:
 ```lua
 local glide = require("path.to.glide")
@@ -84,7 +136,9 @@ local glide = require("path.to.glide")
 Now you can use GlideUI!
 
 # Roadmap
-- ~Make a better frame dragging system (I am struggling with this one).~
+- ~Make a better frame dragging system.~
+- Make all the functionallity you need.
+- Make it as stable as possible.
 <!--
 - Make a layer system for frames and elements.
 I want GlideUI to not have any element/frame registry or table, so making a layer system is basically impossible. I also don't want to interfere
@@ -127,3 +181,4 @@ end
 ```
 
 ![Hovered](screenshots/hover_button_1.png) ![Not hovered](screenshots/hover_button_2.png)
+</details>
