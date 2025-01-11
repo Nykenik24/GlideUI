@@ -12,8 +12,7 @@ GlideUI is currently **W.I.P** *(Work In Progress)*, so expect bugs and lack of 
 
 # Features
 ## Elements 🟦
-Glide's elements are not `button`, `slider`, etc. They are objects with various useful events, methods, style options and basic parameters. This makes it so you can build your GUI elements step by step, but without being too tedious, allowing for incredible customization. If you don't like building GUI elements manually, you can also use the prefabs.
-> Prefabs are not made at this moment.
+Glide's elements are not `button`, `slider`, etc. They are objects with various useful events, methods, style options and basic parameters. This makes it so you can build your GUI elements step by step, but without being too tedious, allowing for incredible customization.
 
 ## Frames 🖼️
 Frames in Glide work as an element storer, you can align (easier) or attach (more precise) an element to a frame and then move the frame with `Frame:Drag()` or manually changing `frame.x` and `frame.y`. Frames also have mouse grabbing (with `Frame:GrabMouse(true)`).
@@ -84,7 +83,6 @@ local glide = require("path.to.glide")
 Now you can use GlideUI!
 
 # Roadmap
-- Make prefabs.
 - ~Make a better frame dragging system (I am struggling with this one).~
 <!--
 - Make a layer system for frames and elements.
