@@ -1,3 +1,5 @@
+---@diagnostic disable: duplicate-set-field
+
 local frame = require("src.frame")
 local element = require("src.element")
 
@@ -29,6 +31,13 @@ function glide.New(x, y, w, h, color, fg_color)
 	return element(x, y, w, h, color, fg_color or nil)
 end
 
+---Create a new GlideUI frame
+---@param x number x-coordinate
+---@param y number y-coordinate
+---@param w number width
+---@param h number height
+---@param color table color
+---@return GlideFrame
 function glide.NewFrame(x, y, w, h, color)
 	--see "src/frame.lua"
 	return frame(x, y, w, h, color)

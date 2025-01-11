@@ -1,17 +1,27 @@
+---@diagnostic disable: duplicate-set-field
+
 require("src.utils")
 
 return function(x, y, w, h, color)
-	return {
+	---@class GlideFrame
+	local frame = {
 		x = x,
 		y = y,
 		w = w,
 		h = h,
 		color = color,
-		Draw = function(self)
+		---Draw the frame
+		---@param self GlideFrame
+		---@param mode? love.DrawMode Default is "fill".
+		Draw = function(self, mode)
+			mode = mode or "fill"
 			love.graphics.setColor(unpack(self.color))
-			love.graphics.rectangle("fill", self.x, self.y, self.w, self.h)
+			love.graphics.rectangle(mode, self.x, self.y, self.w, self.h)
 			love.graphics.setColor(1, 1, 1, 1)
 		end,
+		---Draw debug info
+		---@param self GlideFrame
+		---@param opacity? number Goes from 0 (transparent) to 1 (opaque). Default is 1.
 		_DrawDebug = function(self, opacity)
 			opacity = opacity or 1
 			if self:Hovering() then
@@ -47,8 +57,18 @@ cy: %i
 
 			love.graphics.setColor(1, 1, 1, 1)
 		end,
+
+		---@alias mousebutton integer
+		---| "1": Left button
+		---| "2": Right button
+		---| "3": Middle button
+
+		---Press event. Returns `true` if the frame is being pressed with mouse button `bttn`, `false` otherwise.
+		---@param self GlideFrame
+		---@param bttn mousebutton
+		---@return boolean Pressing
 		Pressed = function(self, bttn)
-			if self:Hovering(bttn) then
+			if self:Hovering() then
 				function love.mousepressed(cx, cy, button)
 					if bttn == button then
 						self._pressed = true
@@ -62,13 +82,24 @@ cy: %i
 			return false
 		end,
 		_pressed = false,
+		---Hover event. Returns `true` if the frame is being hovered, `false` otherwise.
+		---@param self GlideFrame
+		---@return boolean Hovering
 		Hovering = function(self)
 			return IsHovering(self.x, self.y, self.w, self.h)
 		end,
+		---Hold event. Returns `true` if frame is being holded with mouse button `bttn`, false otherwise.
+		---@param self any
+		---@param bttn any
+		---@return boolean
 		Holding = function(self, bttn)
 			return IsPressing(self.x, self.y, self.w, self.h, bttn)
 		end,
 		dragging = false,
+		---Drag the frame with the mouse.
+		---@param self GlideFrame
+		---@param limit_x? number Default is `frame.w`.
+		---@param limit_y? number Default is `frame.h`.
 		Drag = function(self, limit_x, limit_y)
 			if dragging_frame and not self.dragging then
 				return
@@ -87,6 +118,9 @@ cy: %i
 			end
 		end,
 		grabbed = false,
+		---Lock mouse to the frame.
+		---@param self GlideFrame
+		---@param active boolean
 		GrabMouse = function(self, active)
 			if active then
 				self.grabbed = true
@@ -107,6 +141,10 @@ cy: %i
 				self.grabbed = false
 			end
 		end,
+		---Lock x to a certain range.
+		---@param self GlideFrame
+		---@param min number Minimum x
+		---@param max number Maximum x
 		LockX = function(self, min, max)
 			if self.x < min then
 				self.x = min
@@ -114,6 +152,10 @@ cy: %i
 				self.x = max
 			end
 		end,
+		---Lock y to a certain range.
+		---@param self GlideFrame
+		---@param min number Minimum y
+		---@param max number Maximum y
 		LockY = function(self, min, max)
 			if self.y < min then
 				self.y = min
@@ -121,6 +163,12 @@ cy: %i
 				self.y = max
 			end
 		end,
+		---Locks the frame to the window.
+		---@param self GlideFrame
+		---@param left? number Left side offset.
+		---@param right? number Right side offset.
+		---@param top? number Top offset.
+		---@param bottom? number Bottom offset.
 		LockToWindow = function(self, left, right, top, bottom)
 			left, right = left or 0, right or 0
 			top, bottom = top or 0, bottom or 0
@@ -129,4 +177,5 @@ cy: %i
 			self:LockY(0 + top, window_h - self.h - bottom)
 		end,
 	}
+	return frame
 end
