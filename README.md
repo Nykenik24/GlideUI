@@ -1,5 +1,4 @@
 <!-- TOC start (generated with https://github.com/derlin/bitdowntoc) -->
-
 - [Overview](#overview)
    * [Disclaimer](#disclaimer)
       + [Helping in development](#helping-in-development)
@@ -15,13 +14,11 @@
    * [Demo](#demo)
    * [Recipes](#recipes)
 
+
 <!-- TOC end -->
 
 ![GitHub Downloads (all assets, all releases)](https://img.shields.io/github/downloads/Nykenik24/GlideUI/total) ![GitHub Repo stars](https://img.shields.io/github/stars/Nykenik24/GlideUI?style=flat) ![GitHub last commit](https://img.shields.io/github/last-commit/Nykenik24/GlideUI) ![GitHub Release Date](https://img.shields.io/github/release-date/Nykenik24/GlideUI)
-
-
-
-
+        
 ### GlideUI is under the MIT license.
 # Overview
 A lightweight Love2d GUI library with the purpose of creating easy and fast interfaces for quick debugging, ultra-customizable menus and more.
@@ -35,7 +32,7 @@ GlideUI is currently **W.I.P** *(Work In Progress)*, so expect bugs and missing 
 
 # Features
 ## Elements 🟦
-Glide's elements are not `button`, `slider`, etc. Glide's elements are not button, slider, etc. They are objects with various useful events, methods, style options, and basic parameters. This makes it so you can build your GUI elements step by step, but without being too tedious, allowing for incredible customization.
+Glide's elements are not `button`, `slider`, etc. They are objects with various useful events, methods, style options, and basic parameters. This makes it so you can build your GUI elements step by step, but without being too tedious, allowing for incredible customization.
 
 ## Frames 🖼️
 Frames in Glide act as element containers. You can align (more easily) or attach (more precisely) an element to a frame, and then move the frame with `Frame:Drag()` or by manually changing `frame.x` and `frame.y`. Frames also have mouse grabbing (with `Frame:GrabMouse(true)`).
@@ -120,6 +117,11 @@ git clone https://github.com/Nykenik24/GlideUI.git path/to/glide
 git submodule add https://github.com/Nykenik24/GlideUI.git path/to/glide
 ```
 ### Download the latest release.
+- Go to the repository main page.
+- At the bottom-right, go to the latest release.
+- Download the `.zip` file attached.
+- Put it in your project.
+- Extract it.
 <details>
 <summary>Pros/Cons</summary>
     
@@ -137,7 +139,7 @@ Now you can use GlideUI!
 
 # Roadmap
 - ~Make a better frame dragging system.~
-- Make all the functionallity you need.
+- Make all the functionality you need.
 - Make it as stable as possible.
 <!--
 - Make a layer system for frames and elements.
