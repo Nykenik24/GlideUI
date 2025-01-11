@@ -25,7 +25,7 @@ end
 ---@param h number height
 ---@param color table color
 ---@param fg_color? table text color
----@return table
+---@return GlideElement
 function glide.New(x, y, w, h, color, fg_color)
 	--see "src/element.lua"
 	return element(x, y, w, h, color, fg_color or nil)

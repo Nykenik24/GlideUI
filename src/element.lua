@@ -1,7 +1,18 @@
 require("src.utils")
 
+---@alias x_align string
+---| "left": Align to left side.
+---| "center": Align to the middle/center.
+---| "right": Align to right side.
+
+---@alias y_align string
+---| "top": Align to top.
+---| "center": Align to middle/center.
+---| "right": Align to bottom.
+
 return function(x, y, w, h, color, fg_color)
-	return {
+	---@class GlideElement
+	local element = {
 		x = x,
 		y = y,
 		w = w,
@@ -13,13 +24,23 @@ return function(x, y, w, h, color, fg_color)
 		text = "",
 		text_x = nil,
 		text_y = nil,
+		---Set the element's border.
+		---@param self GlideElement
+		---@param border_width number
+		---@param border_color number
 		SetBorder = function(self, border_width, border_color)
 			self.border_color = border_color
 			self.border = GetBorder(self.x, self.y, self.w, self.h, border_width)
 		end,
+		---Set the element's text.
+		---@param self GlideElement
+		---@param new_text string
 		SetText = function(self, new_text)
 			self.text = new_text
 		end,
+		---Align the text in the element.
+		---@param self GlideElement
+		---@param align x_align
 		AlignText = function(self, align)
 			if align == "center" then
 				local text_w = #self.text * 3.5
@@ -33,28 +54,54 @@ return function(x, y, w, h, color, fg_color)
 				self.text_x = self.x + 2
 			end
 		end,
+		---Attach text to the element.
+		---@param self GlideElement
+		---@param offsetx? number Horizontal offset.
+		---@param offsety? number Vertical offset.
 		AttachText = function(self, offsetx, offsety)
+			offsetx = offsetx or self.w
+			offsety = offsety or self.h
 			self.text_x = self.x + 2 + offsetx
 			self.text_y = self.y + 2 + offsety
 		end,
+		---Make the element's color darker.
+		---@param self GlideElement
+		---@param level number How much darker the element's color is. Use values below 1.
 		Darken = function(self, level)
-			local c1, c2, c3 = color[1], color[2], color[3]
+			local c = self.color
+			local c1, c2, c3 = c[1], c[2], c[3]
 			self.color = { c1 - level, c2 - level, c3 - level }
 		end,
+		---Make the element's color lighter.
+		---@param self GlideElement
+		---@param level number How much lighter the element's color is. Use values below 1.
 		Lighten = function(self, level)
-			local c1, c2, c3 = color[1], color[2], color[3]
+			local c = self.color
+			local c1, c2, c3 = c[1], c[2], c[3]
 			self.color = { c1 + level, c2 + level, c3 + level }
 		end,
+		---Restore the element's color.
+		---@param self GlideElement
 		RestoreColor = function(self)
 			self.color = color
 		end,
+		---Press event.
+		---@param self GlideElement
+		---@param button mousebutton Mouse button.
+		---@param func function Function called.
+		---@return boolean Triggered Event was triggered
 		OnPress = function(self, button, func)
-			if self:Pressed(1 or 2 or 3) then
+			if self:Pressed(button) then
 				func()
 				return true
 			end
 			return false
 		end,
+		---Hold event.
+		---@param self GlideElement
+		---@param button mousebutton Mouse button.
+		---@param func function Function called.
+		---@return boolean Triggered Event was triggered
 		OnHold = function(self, button, func)
 			if self:Holding(button) then
 				func()
@@ -62,20 +109,39 @@ return function(x, y, w, h, color, fg_color)
 			end
 			return false
 		end,
+		---Hover event.
+		---@param self GlideElement
+		---@param func function Function called.
+		---@return boolean Triggered Event was triggered
 		OnHover = function(self, func)
 			if self:Hovering() then
 				func()
+				return true
 			end
+			return false
 		end,
+		---Unhover event.
+		---@param self GlideElement
+		---@param func function Function called.
+		---@return boolean Triggered Event was triggered
 		OnUnhover = function(self, func)
 			if not self:Hovering() then
 				func()
+				return true
 			end
+			return false
 		end,
-		OnRelease = function(self, bttn, func)
-			if self:Released(bttn) then
+		---Release event.
+		---@param self GlideElement
+		---@param button mousebutton Mouse button.
+		---@param func function Function called.
+		---@return boolean Triggered Event was triggered
+		OnRelease = function(self, button, func)
+			if self:Released(button) then
 				func()
+				return true
 			end
+			return false
 		end,
 		Pressed = function(self, bttn)
 			if self:Hovering(bttn) then
@@ -113,6 +179,8 @@ return function(x, y, w, h, color, fg_color)
 		Holding = function(self, bttn)
 			return IsPressing(self.x, self.y, self.w, self.h, bttn)
 		end,
+		---Draw the element.
+		---@param self GlideElement
 		Draw = function(self)
 			love.graphics.setColor(unpack(self.color))
 			love.graphics.rectangle("fill", self.x, self.y, self.w, self.h)
@@ -122,6 +190,9 @@ return function(x, y, w, h, color, fg_color)
 
 			love.graphics.setColor(1, 1, 1, 1)
 		end,
+		---Draw debug info.
+		---@param self GlideElement
+		---@param opacity? number Goes from 0 (transparent) to 1 (opaque). Default is 1.
 		_DrawDebug = function(self, opacity)
 			opacity = opacity or 1
 			if self:Hovering() then
@@ -169,12 +240,23 @@ return function(x, y, w, h, color, fg_color)
 			end
 			love.graphics.setColor(1, 1, 1, 1)
 		end,
+		---Attach to the specified position.
+		---@param self GlideElement
+		---@param targetx number Target x-coordinate
+		---@param targety number Target y-coordinate
+		---@param xoffset? number Horizontal offset.
+		---@param yoffset number Vertical offset.
 		Attach = function(self, targetx, targety, xoffset, yoffset)
 			xoffset, yoffset = xoffset or 0, yoffset or 0
 			self.x = targetx + xoffset
 			self.y = targety + yoffset
 		end,
 		attached = { x = nil, y = nil, frame_x = nil, frame_y = nil, state = false },
+		---Attach to a frame.
+		---@param self GlideElement
+		---@param frame GlideFrame
+		---@param element_x number Starts from `frame.x`.
+		---@param element_y number Starts from `frame.y`.
 		AttachToFrame = function(self, frame, element_x, element_y)
 			self.attached.state = true
 			self.x = frame.x + element_x
@@ -184,6 +266,12 @@ return function(x, y, w, h, color, fg_color)
 			self.attached.y = self.y - frame.y
 			self.attached.frame_y = frame.y
 		end,
+		---Align horizontally to a frame.
+		---@param self GlideElement
+		---@param frame GlideFrame
+		---@param align x_align
+		---@param offset? number Offset
+		---@return boolean
 		AlignToFrameX = function(self, frame, align, offset)
 			self.attached.state = true
 			offset = offset or 0
@@ -207,6 +295,12 @@ return function(x, y, w, h, color, fg_color)
 				return false
 			end
 		end,
+		---Align vertically to a frame.
+		---@param self GlideElement
+		---@param frame GlideFrame
+		---@param align y_align
+		---@param offset? number Offset
+		---@return boolean
 		AlignToFrameY = function(self, frame, align, offset)
 			self.attached.state = true
 			offset = offset or 0
@@ -230,6 +324,10 @@ return function(x, y, w, h, color, fg_color)
 				return false
 			end
 		end,
+		---Lock x to a certain range.
+		---@param self GlideElement
+		---@param min number Minimum x
+		---@param max number Maximum x
 		LockX = function(self, min, max)
 			if self.x < min then
 				self.x = min
@@ -237,6 +335,10 @@ return function(x, y, w, h, color, fg_color)
 				self.x = max
 			end
 		end,
+		---Lock y to a certain range.
+		---@param self GlideElement
+		---@param min number Minimum y
+		---@param max number Maximum y
 		LockY = function(self, min, max)
 			if self.y < min then
 				self.y = min
@@ -244,11 +346,16 @@ return function(x, y, w, h, color, fg_color)
 				self.y = max
 			end
 		end,
+		---Lock horizontal position.
+		---@param self GlideElement
 		LockAxisX = function(self)
 			self:LockX(self.x - 1, self.x + 1)
 		end,
+		---Lock vertical position.
+		---@param self GlideFrame
 		LockAxisY = function(self)
 			self:LockY(self.y - 1, self.y + 1)
 		end,
 	}
+	return element
 end
