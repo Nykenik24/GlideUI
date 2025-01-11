@@ -1,10 +1,10 @@
 [![MIT Licence](https://badges.frapsoft.com/os/mit/mit.svg?v=103)](https://opensource.org/licenses/mit-license.php) [![Open Source Love](https://badges.frapsoft.com/os/v2/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges/) 
 
 # Overview
-A lightweight Love2d GUI library with the purpose of making easy and fast interfaces for fast debugging, ultra-customizable menus and more.
+A lightweight Love2d GUI library with the purpose of creating easy and fast interfaces for quick debugging, ultra-customizable menus and more.
 
 ## Disclaimer
-GlideUI is currently **W.I.P** *(Work In Progress)*, so expect bugs and lack of features. I am working hard on making it fully stable, but for now don't expect perfect behavior of the library.
+GlideUI is currently **W.I.P** *(Work In Progress)*, so expect bugs and missing features. I am working hard on making it fully stable, but for now, do not expect perfect behavior from the library.
 
 ### Helping in development
 - If you encounter any bug or have suggestions, you can [open an issue](https://github.com/Nykenik24/GlideUI/issues).
@@ -12,16 +12,16 @@ GlideUI is currently **W.I.P** *(Work In Progress)*, so expect bugs and lack of 
 
 # Features
 ## Elements 🟦
-Glide's elements are not `button`, `slider`, etc. They are objects with various useful events, methods, style options and basic parameters. This makes it so you can build your GUI elements step by step, but without being too tedious, allowing for incredible customization.
+Glide's elements are not `button`, `slider`, etc. Glide's elements are not button, slider, etc. They are objects with various useful events, methods, style options, and basic parameters. This makes it so you can build your GUI elements step by step, but without being too tedious, allowing for incredible customization.
 
 ## Frames 🖼️
-Frames in Glide work as an element storer, you can align (easier) or attach (more precise) an element to a frame and then move the frame with `Frame:Drag()` or manually changing `frame.x` and `frame.y`. Frames also have mouse grabbing (with `Frame:GrabMouse(true)`).
+Frames in Glide act as element containers. You can align (more easily) or attach (more precisely) an element to a frame, and then move the frame with `Frame:Drag()` or by manually changing `frame.x` and `frame.y`. Frames also have mouse grabbing (with `Frame:GrabMouse(true)`).
 
 ## Flexible and Powerful UIs 🔨
-GlideUI allows for infinite customization of [elements](README.md#elements) and [frames](README.md#frames). Lighten or Darken your elements with methods, or restore their color completely. Set and align the text inside elements, or align elements inside frames. The possibilites are infinite!
+GlideUI allows for infinite customization of [elements](README.md#elements) and [frames](README.md#frames). You can lighten or darken your elements with methods, or restore their color completely. Set and adjust properties as needed. Set and align the text inside elements, or align elements inside frames. The possibilites are infinite!
 
 ## Events 📥
-Glide's elements have easy-to-use events, such as `OnPress(button: number, func: function)`, `OnHover(func: function)` and `OnUnhover(func: function)`; `OnHold(button: number, func: function)`, etc.
+Glide's elements have easy-to-use events, such as `OnPress(button: number, func: function)`, `OnHover(func: function)`, `OnUnhover(func: function)`, `OnHold(button: number, func: function)`, and more.
 
 
 # Simple GUI example
@@ -40,7 +40,8 @@ function love.load()
     FRAME = glide.NewFrame(100, 200, 200, 200, {0.5, 0.5, 0.5})
 end
 
-function love.update(dt) -- updated every frame
+function love.update(dt) -- called every frame
+
     glide.Update() --IMPORTANT: call this before any other glide call
 
     --use the button's OnPress event
@@ -66,7 +67,7 @@ end
 
 # Installation
 1. ## Download the library:
-There are three methods:
+There are three methods to download the library:
 - ### Clone the library:
 ```bash
 git clone https://github.com/Nykenik24/GlideUI.git path/to/glide
@@ -91,7 +92,7 @@ on how you draw and manage your UIs
 -->
 <!-- 
 - Fix all visual and interactive bugs (Such as dragging multiple elements at the same time unintentionally).
-Doesn't really make sense because bugs will appear and disappear with time, so it's not really an objective, it is a task.
+This doesn't make sense as bugs will appear and disappear over time, so it's not really an objective; it is a task.
 -->
 
 # More
