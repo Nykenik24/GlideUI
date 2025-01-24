@@ -6,6 +6,7 @@ end
 local frame = require(getScriptFolder() .. "frame")
 local element = require(getScriptFolder() .. "element")
 
+---@class GlideUI
 local glide = {}
 
 -- INFO: Variables
