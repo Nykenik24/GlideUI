@@ -1,6 +1,9 @@
 ---@diagnostic disable: duplicate-set-field
 
-require("src.utils")
+local function getScriptFolder() --* get the path from the root folder in which THIS script is running
+	return (debug.getinfo(1, "S").source:sub(2):match("(.*/)"))
+end
+require(getScriptFolder() .. "utils")
 
 return function(x, y, w, h, color)
 	---@class GlideFrame

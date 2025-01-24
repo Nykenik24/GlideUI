@@ -1,7 +1,10 @@
 ---@diagnostic disable: duplicate-set-field
 
-local frame = require("src.frame")
-local element = require("src.element")
+local function getScriptFolder() --* get the path from the root folder in which THIS script is running
+	return (debug.getinfo(1, "S").source:sub(2):match("(.*/)"))
+end
+local frame = require(getScriptFolder() .. "frame")
+local element = require(getScriptFolder() .. "element")
 
 local glide = {}
 
