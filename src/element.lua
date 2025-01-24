@@ -16,6 +16,7 @@ require(getScriptFolder() .. "utils")
 return function(x, y, w, h, color, fg_color)
 	---@class GlideElement
 	local element = {
+		type = "element",
 		x = x,
 		y = y,
 		w = w,

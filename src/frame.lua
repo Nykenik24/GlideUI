@@ -8,6 +8,7 @@ require(getScriptFolder() .. "utils")
 return function(x, y, w, h, color)
 	---@class GlideFrame
 	local frame = {
+		type = "frame",
 		x = x,
 		y = y,
 		w = w,
