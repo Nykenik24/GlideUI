@@ -72,7 +72,7 @@ return function(x, y, w, h, color, fg_color)
 		---@param self GlideElement
 		---@param level number How much darker the element's color is. Use values below 1.
 		Darken = function(self, level)
-			local c = self.color
+			local c = color
 			local c1, c2, c3 = c[1], c[2], c[3]
 			self.color = { c1 - level, c2 - level, c3 - level }
 		end,
@@ -80,7 +80,7 @@ return function(x, y, w, h, color, fg_color)
 		---@param self GlideElement
 		---@param level number How much lighter the element's color is. Use values below 1.
 		Lighten = function(self, level)
-			local c = self.color
+			local c = color
 			local c1, c2, c3 = c[1], c[2], c[3]
 			self.color = { c1 + level, c2 + level, c3 + level }
 		end,
