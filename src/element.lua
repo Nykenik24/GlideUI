@@ -89,6 +89,12 @@ return function(x, y, w, h, color, fg_color)
 		RestoreColor = function(self)
 			self.color = color
 		end,
+		---Change color.
+		---@param self GlideElement
+		---@param new_color table Color
+		ChangeColor = function(self, new_color)
+			color = new_color
+		end,
 		---Press event.
 		---@param self GlideElement
 		---@param button mousebutton Mouse button.
