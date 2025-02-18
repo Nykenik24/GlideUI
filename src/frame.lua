@@ -108,7 +108,7 @@ cy: %i
 			if dragging_frame and not self.dragging then
 				return
 			end
-			limit_x, limit_y = limit_x or self.w, limit_y or self.w
+			limit_x, limit_y = limit_x or self.w, limit_y or self.h
 			if IsPressing(self.x, self.y, limit_x, limit_y, 1) then
 				dragging_frame = true
 				self.dragging = true
